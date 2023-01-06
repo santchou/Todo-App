@@ -9,13 +9,13 @@
     {
       "title": "Legs Workout",
       "dateAndTime": "Tue Jan 03 2023 03:10:00",
-      "reminder": true,
+      "reminder": false,
       "id": 2
     },
     {
       "title": "Finger Workout",
-      "dateAndTime": "Tue Jan 10 2023 04:50:00",
-      "reminder": false,
+      "dateAndTime": "Tue Jan 17 2023 03:19:00",
+      "reminder": true,
       "id": 3
     }
   ]

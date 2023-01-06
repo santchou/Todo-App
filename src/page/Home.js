@@ -8,9 +8,7 @@ const Home = ({
   tasks,
   showAddTask,
   setShowAddTask,
-  taskToEdit,
   handleDeleteTask,
-  handleEditTask,
   handleAddTask,
   handleToggleReminder,
 }) => {
@@ -27,9 +25,7 @@ const Home = ({
       {tasks.length > 0 ? (
         <Tasks
           tasks={tasks}
-          taskToEdit={taskToEdit}
           handleAddTask={handleAddTask}
-          handleEditTask={handleEditTask}
           handleDelete={handleDeleteTask}
           handleToggleReminder={handleToggleReminder}
         />

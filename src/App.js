@@ -5,9 +5,7 @@ import Home from "./page/Home";
 import "./App.css";
 
 function App() {
-  // const [uniqueId, setUniqueId] = useState(3);
   const [tasks, setTasks] = useState([]);
-  const [taskToEdit, setTaskToEdit] = useState(null);
   const [showAddTask, setShowAddTask] = useState(false);
 
   useEffect(() => {
@@ -29,12 +27,6 @@ function App() {
   const fetchTask = async (id) => {
     const { data } = await axios.get(`http://localhost:5000/tasks/${id}`);
     return data;
-  };
-
-  //Edit Task
-  const editTask = (task) => {
-    const newTask = task ? { ...task } : task;
-    setTaskToEdit(newTask);
   };
 
   //Delete Task
@@ -75,9 +67,7 @@ function App() {
         tasks={tasks}
         showAddTask={showAddTask}
         setShowAddTask={setShowAddTask}
-        taskToEdit={taskToEdit}
         handleAddTask={addTask}
-        handleEditTask={editTask}
         handleDeleteTask={deleteTask}
         handleToggleReminder={toggleReminder}
       />
