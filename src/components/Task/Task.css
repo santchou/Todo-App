@@ -1,0 +1,32 @@
+.task {
+  display: flex;
+  align-items: center;
+}
+
+.task-items {
+  flex: 1;
+  background-color: #b5c9d1;
+  margin: 0 0 5px 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.task-items > p {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.task-items > span {
+  display: block;
+  color: green;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.task-items.reminder {
+  border-left: 5px solid yellow;
+}
+.task-actions button {
+  margin-left: 5px;
+}

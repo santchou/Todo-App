@@ -1,23 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Home from "./page/Home";
 
 function App() {
+  const [uniqueId, setUniqueId] = useState(2);
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      title: "Abs Workout",
+      dateAndTime: "Wed Jan 04 2023 02:05:00",
+      reminder: true,
+    },
+  ]);
+  const [taskToEdit, setTaskToEdit] = useState(null);
+  const [showAddTask, setShowAddTask] = useState(false);
+
+  //Edit Task
+  const editTask = (task) => {
+    const newTask = task ? { ...task } : task;
+    setTaskToEdit(newTask);
+  };
+
+  //Delete Task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  //Handle Reminder
+  const toggleReminder = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
+
+  //Add Task
+  const addTask = ({ title, selectedDateTime, reminder }) => {
+    // console.log(title, selectedDateTime, reminder);
+    setUniqueId(uniqueId + 1);
+    setTasks([
+      ...tasks,
+      {
+        id: uniqueId,
+        title: title,
+        dateAndTime: selectedDateTime?.toString()?.slice(0, 24),
+        reminder: reminder,
+      },
+    ]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Home
+        tasks={tasks}
+        showAddTask={showAddTask}
+        setShowAddTask={setShowAddTask}
+        taskToEdit={taskToEdit}
+        handleAddTask={addTask}
+        handleEditTask={editTask}
+        handleDeleteTask={deleteTask}
+        handleToggleReminder={toggleReminder}
+      />
     </div>
   );
 }

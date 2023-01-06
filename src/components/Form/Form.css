@@ -1,0 +1,36 @@
+form {
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.form-item {
+  margin-bottom: 20px;
+}
+
+.form-item label {
+  display: block;
+}
+
+.form-item input {
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding: 0 10px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.form-item-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-item-check label {
+  margin-right: 20px;
+}
+
+.form-item-check input {
+  height: 20px;
+}
