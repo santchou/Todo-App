@@ -3,15 +3,8 @@ import "./App.css";
 import Home from "./page/Home";
 
 function App() {
-  const [uniqueId, setUniqueId] = useState(2);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Abs Workout",
-      dateAndTime: "Wed Jan 04 2023 02:05:00",
-      reminder: true,
-    },
-  ]);
+  const [uniqueId, setUniqueId] = useState(3);
+  const [tasks, setTasks] = useState([]);
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [showAddTask, setShowAddTask] = useState(false);
 
