@@ -1,15 +1,12 @@
+import { TaskState } from "../../Context/TaskProvider";
 import Task from "../Task/Task";
 
-const Tasks = ({ tasks, handleDelete, handleToggleReminder }) => {
+const Tasks = () => {
+  const { tasks } = TaskState();
   return (
     <>
       {tasks.map((task) => (
-        <Task
-          key={task.id}
-          task={task}
-          handleDelete={handleDelete}
-          handleToggleReminder={handleToggleReminder}
-        />
+        <Task key={task.id} task={task} />
       ))}
     </>
   );

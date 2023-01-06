@@ -4,19 +4,13 @@
       "id": 1,
       "title": "Abs Workout",
       "dateAndTime": "Wed Jan 04 2023 04:00:00",
-      "reminder": true
+      "reminder": false
     },
     {
       "title": "Legs Workout",
-      "dateAndTime": "Tue Jan 03 2023 03:10:00",
-      "reminder": false,
-      "id": 2
-    },
-    {
-      "title": "Finger Workout",
-      "dateAndTime": "Tue Jan 17 2023 03:19:00",
+      "dateAndTime": "Thu Jan 12 2023 03:10:00",
       "reminder": true,
-      "id": 3
+      "id": 2
     }
   ]
 }

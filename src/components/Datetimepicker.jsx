@@ -2,7 +2,6 @@ import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-// import dayjs from "dayjs";
 
 const Datetimepicker = ({ selectedDateTime, handleChange }) => {
   return (

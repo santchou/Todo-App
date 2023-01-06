@@ -1,14 +1,17 @@
 import { useState } from "react";
+import { TaskState } from "../../Context/TaskProvider";
 import Button from "../Button/Button";
 import Datetimepicker from "../Datetimepicker";
 import "./Form.css";
 
-const Form = ({ handleAddTask }) => {
+const Form = () => {
   const [selectedDateTime, setSelectedDateTime] = useState(null);
   const [title, setTitle] = useState("");
   const [reminder, setReminder] = useState("");
   const [errorTitle, setErrorTitle] = useState(false);
   const [errorDate, setErrorDate] = useState(false);
+
+  const { addTask } = TaskState();
 
   const handleChange = (newValue) => {
     setErrorDate(false);
@@ -27,7 +30,7 @@ const Form = ({ handleAddTask }) => {
       return;
     }
 
-    handleAddTask({
+    addTask({
       title,
       selectedDateTime: selectedDateTime?.$d,
       reminder,

@@ -1,12 +1,14 @@
+import { TaskState } from "../../Context/TaskProvider";
 import Button from "../Button/Button";
 import "./Task.css";
 
-const Task = ({ task, handleDelete, handleToggleReminder }) => {
+const Task = ({ task }) => {
+  const { deleteTask, toggleReminder } = TaskState();
   return (
     <div className="task">
       <div
         className={`task-items ${task.reminder ? "reminder" : ""}`}
-        onClick={() => handleToggleReminder(task.id)}
+        onClick={() => toggleReminder(task.id)}
       >
         <p>{task.title}</p>
         <span>{task.dateAndTime}</span>
@@ -17,7 +19,7 @@ const Task = ({ task, handleDelete, handleToggleReminder }) => {
           color="white"
           backgroundColor="red"
           task={task}
-          handleTask={() => handleDelete(task.id)}
+          handleTask={() => deleteTask(task.id)}
         />
       </div>
     </div>

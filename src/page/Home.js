@@ -3,16 +3,10 @@ import Footer from "../components/Footer/Footer";
 import Form from "../components/Form/Form";
 import Header from "../components/Header/Header";
 import Tasks from "../components/Tasks/Tasks";
+import { TaskState } from "../Context/TaskProvider";
 
-const Home = ({
-  tasks,
-  showAddTask,
-  setShowAddTask,
-  handleDeleteTask,
-  handleAddTask,
-  handleToggleReminder,
-}) => {
-  console.log(showAddTask);
+const Home = ({ showAddTask, setShowAddTask }) => {
+  const { tasks } = TaskState();
   return (
     <div className="home">
       <Header
@@ -20,18 +14,9 @@ const Home = ({
         showAddTask={showAddTask}
         handleTask={() => setShowAddTask(!showAddTask)}
       />
-      {showAddTask && <Form handleAddTask={handleAddTask} />}
+      {showAddTask && <Form />}
 
-      {tasks.length > 0 ? (
-        <Tasks
-          tasks={tasks}
-          handleAddTask={handleAddTask}
-          handleDelete={handleDeleteTask}
-          handleToggleReminder={handleToggleReminder}
-        />
-      ) : (
-        "No Tasks Added"
-      )}
+      {tasks.length > 0 ? <Tasks /> : "No Tasks Added"}
 
       <Footer />
     </div>
