@@ -19,9 +19,15 @@ function App() {
     getTasks();
   }, []);
 
-  //Fetch Tash
+  //Fetch Tashs
   const fetchTasks = async () => {
     const { data } = await axios.get("http://localhost:5000/tasks");
+    return data;
+  };
+
+  //Fetch Task
+  const fetchTask = async (id) => {
+    const { data } = await axios.get(`http://localhost:5000/tasks/${id}`);
     return data;
   };
 
@@ -38,10 +44,16 @@ function App() {
   };
 
   //Handle Reminder
-  const toggleReminder = (id) => {
+  const toggleReminder = async (id) => {
+    const toogleTask = await fetchTask(id);
+    const updateTask = { ...toogleTask, reminder: !toogleTask.reminder };
+    const { data } = await axios.put(
+      `http://localhost:5000/tasks/${id}`,
+      updateTask
+    );
     setTasks(
       tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
+        task.id === id ? { ...task, reminder: data.reminder } : task
       )
     );
   };
