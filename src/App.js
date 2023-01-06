@@ -1,12 +1,29 @@
-import { useState } from "react";
-import "./App.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Home from "./page/Home";
+
+import "./App.css";
 
 function App() {
   const [uniqueId, setUniqueId] = useState(3);
   const [tasks, setTasks] = useState([]);
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [showAddTask, setShowAddTask] = useState(false);
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const serverTasks = await fetchTasks();
+      setTasks(serverTasks);
+    };
+
+    getTasks();
+  }, []);
+
+  //Fetch Tash
+  const fetchTasks = async () => {
+    const { data } = await axios.get("http://localhost:5000/tasks");
+    return data;
+  };
 
   //Edit Task
   const editTask = (task) => {
