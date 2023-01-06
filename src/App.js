@@ -5,7 +5,7 @@ import Home from "./page/Home";
 import "./App.css";
 
 function App() {
-  const [uniqueId, setUniqueId] = useState(3);
+  // const [uniqueId, setUniqueId] = useState(3);
   const [tasks, setTasks] = useState([]);
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [showAddTask, setShowAddTask] = useState(false);
@@ -32,7 +32,8 @@ function App() {
   };
 
   //Delete Task
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await axios.delete(`http://localhost:5000/tasks/${id}`);
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
@@ -46,18 +47,14 @@ function App() {
   };
 
   //Add Task
-  const addTask = ({ title, selectedDateTime, reminder }) => {
-    // console.log(title, selectedDateTime, reminder);
-    setUniqueId(uniqueId + 1);
-    setTasks([
-      ...tasks,
-      {
-        id: uniqueId,
-        title: title,
-        dateAndTime: selectedDateTime?.toString()?.slice(0, 24),
-        reminder: reminder,
-      },
-    ]);
+  const addTask = async ({ title, selectedDateTime, reminder }) => {
+    const { data } = await axios.post("http://localhost:5000/tasks", {
+      title,
+      dateAndTime: selectedDateTime?.toString()?.slice(0, 24),
+      reminder,
+    });
+
+    setTasks([...tasks, data]);
   };
 
   return (

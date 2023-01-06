@@ -7,10 +7,16 @@
       "reminder": true
     },
     {
-      "id": 2,
       "title": "Legs Workout",
-      "dateAndTime": "Wed Jan 05 2023 05:10:00",
-      "reminder": false
+      "dateAndTime": "Tue Jan 03 2023 03:10:00",
+      "reminder": "",
+      "id": 2
+    },
+    {
+      "title": "Finger Workout",
+      "dateAndTime": "Tue Jan 10 2023 04:50:00",
+      "reminder": "",
+      "id": 3
     }
   ]
 }
